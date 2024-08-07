@@ -1,0 +1,10 @@
+22:22:01 **** Incremental Build of configuration Debug for project App_1_3_Grupo_7_2024 ****
+make -j4 all 
+arm-none-eabi-size  App_1_3_Grupo_7_2024.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12976	     12	   3452	  16440	   4038	App_1_3_Grupo_7_2024.elf
+Finished building: default.size.stdout
+ 
+
+22:22:02 Build Finished. 0 errors, 0 warnings. (took 675ms)
+
