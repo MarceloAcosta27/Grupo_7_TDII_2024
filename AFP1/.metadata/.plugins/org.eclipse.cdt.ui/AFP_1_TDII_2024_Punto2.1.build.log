@@ -1,0 +1,10 @@
+02:46:59 **** Incremental Build of configuration Debug for project AFP_1_TDII_2024_Punto2.1 ****
+make -j4 all 
+arm-none-eabi-size  AFP_1_TDII_2024_Punto2.1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12604	     12	   3452	  16068	   3ec4	AFP_1_TDII_2024_Punto2.1.elf
+Finished building: default.size.stdout
+ 
+
+02:47:00 Build Finished. 0 errors, 0 warnings. (took 505ms)
+
