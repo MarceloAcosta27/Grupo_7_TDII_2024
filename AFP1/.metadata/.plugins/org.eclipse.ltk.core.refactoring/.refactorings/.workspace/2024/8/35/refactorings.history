@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;Ejemplo04_Driver_GPIO/App_1_4_Grupo_7_2024 Debug.launch&apos;" deleteContents="false" description="Delete resource &apos;Ejemplo04_Driver_GPIO/App_1_4_Grupo_7_2024 Debug.launch&apos;" element1="/Ejemplo04_Driver_GPIO/App_1_4_Grupo_7_2024 Debug.launch" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1724972443371"/>
-</session>

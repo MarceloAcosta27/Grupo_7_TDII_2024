@@ -1,7 +1,0 @@
-DeviceConfigurationTool..FirmwareRepositoryPath=C\:\\Users\\marcelo\\STM32Cube\\Repository\\STM32Cube_FW_F4_V1.28.0
-DeviceConfigurationTool..UpdaterCheckInterval=5
-DeviceConfigurationTool..UpdaterDataRefresh=dataRefreshDataOnly
-DeviceConfigurationTool..UpdaterDataRefreshInterfval=3
-DeviceConfigurationTool.AskToSwitchToCubeMxPerspective=false
-DeviceConfigurationTool.SwitchToCubeMxPerspective=true
-eclipse.preferences.version=1
