@@ -1,0 +1,29 @@
+# Archivos y carpetas generados por el IDE
+.metadata/
+.snap/
+# Archivos temporales y logs
+*.log
+*.tmp
+
+# Archivos específicos de compilación
+*.o
+*.d
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.srec
+*.out
+
+# Directorios de compilación
+Debug/
+Release/
+build/
+
+# Archivos temporales del sistema operativo
+.DS_Store
+Thumbs.db
+*.swp
+*~
+*.bak

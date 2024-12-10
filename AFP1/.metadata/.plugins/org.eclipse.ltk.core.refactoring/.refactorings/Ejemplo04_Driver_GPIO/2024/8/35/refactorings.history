@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;Ejemplo04_Driver_GPIO/App_1_4_Grupo_7_2024.ioc&apos; to &apos;Ejemplo04_Driver_GPIO.ioc&apos;" description="Rename resource &apos;App_1_4_Grupo_7_2024.ioc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="App_1_4_Grupo_7_2024.ioc" name="Ejemplo04_Driver_GPIO.ioc" stamp="1724972463267" updateReferences="true"/>
-</session>
