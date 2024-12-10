@@ -1,0 +1,99 @@
+/*
+ * API_Debounce.c
+ *
+ *  Created on: Dec 5, 2024
+ *      Author: Grupo 7
+ */
+
+/* Includes ------------------------------------------------------------------*/
+#include "main.h"
+#include "API_DelayNoBloqueante.h"
+#include "API_GPIO.h"
+#include "API_Debounce.h"
+
+
+/*Declaracion de variables */
+
+static debounceState_t debounceState;	// Representa el estado del boton (BUTTON_UP,BUTTON_FALLING, BUTTON_DOWN, BUTTON_RISING)
+static bool_t keyPressing = false;		// fue presionado el boton? Inicializacion en falso
+static bool_t fallingEdge = false;		// Hubo flanco descendente? Inicializacion en falso
+bool_t buttonState;
+delay_t debounceDelay;
+
+
+
+/**
+  * @brief Read key Function
+  * @param none
+  * @retval bool_t
+  */
+bool_t readKey (void){
+	bool_t keyPress = false;
+	fallingEdge = false;
+	if (keyPressing == true){
+		keyPress = true;
+		keyPressing = false;
+	}
+	return (keyPress);
+}
+
+
+/**
+  * @brief Initialization debounce Function
+  * @param none
+  * @retval none
+  */
+void debounceFSM_init(){
+	debounceState = BUTTON_UP;     // Estado inicial de la MEF
+	delayInit(&debounceDelay, 80); // Retardo de 40 ms
+	writeLedOff_GPIO(LEDS[0]);     // LEDs apagados
+	writeLedOff_GPIO(LEDS[1]);
+	writeLedOff_GPIO(LEDS[2]);
+	buttonState = tr;            // Estado inicial del botÃ³n
+}
+
+/**
+  * @brief Debounce MEF Function
+  * @param butttonStatus
+  * @retval None
+  */
+void debounceFSM_update(buttonStatus) {
+    switch (debounceState) {
+        case BUTTON_UP:
+            if (readButton_GPIO() == GPIO_PIN_RESET) { // Boton presionado
+                debounceState = BUTTON_FALLING;   // Siguiente estado
+                delayRead(&debounceDelay);        // Iniciar retardo
+            }
+            break;
+        case BUTTON_FALLING:
+            if (delayRead(&debounceDelay)) {           // Verifica si se cumplio el retardo
+                if (readButton_GPIO() == GPIO_PIN_RESET) {  // Confirma boton presionado
+                    debounceState = BUTTON_DOWN;       // Siguiente estado
+                    keyPressing=true;
+                    fallingEdge=true;
+                } else {
+                    debounceState = BUTTON_UP;         //Estado anterior
+                }
+            }
+            break;
+        case BUTTON_DOWN:
+            if (readButton_GPIO() == GPIO_PIN_SET) {   // Boton liberado
+                debounceState = BUTTON_RISING;         // Siguiente estado
+                delayRead(&debounceDelay);             // Iniciar retardo
+            }
+            break;
+        case BUTTON_RISING:
+            if (delayRead(&debounceDelay)) {             // Verifica si se cumple el retardo
+                if (readButton_GPIO() == GPIO_PIN_SET) { // Confirma boton liberado
+                    debounceState = BUTTON_UP;           // Siguiente estado
+                    keyPressing=false;
+                } else {
+                    debounceState = BUTTON_DOWN;         // vuelve al estado anterior
+                }
+            }
+            break;
+    }
+}
+
+
+

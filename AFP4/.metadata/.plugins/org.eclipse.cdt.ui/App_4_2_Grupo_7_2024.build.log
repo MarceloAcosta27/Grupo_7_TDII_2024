@@ -1,0 +1,43 @@
+20:42:33 **** Incremental Build of configuration Debug for project App_4_2_Grupo_7_2024 ****
+make -j4 all 
+arm-none-eabi-gcc "../Drivers/API/Src/API_Debounce.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/marcelo/STM32CubeIDE/Grupo_7_TDII_2024/AFP4/App_4_2_Grupo_7_2024/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_Debounce.d" -MT"Drivers/API/Src/API_Debounce.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_Debounce.o"
+../Drivers/API/Src/API_Debounce.c: In function 'debounceFSM_init':
+../Drivers/API/Src/API_Debounce.c:56:30: warning: passing argument 1 of 'writeLedOff_GPIO' makes integer from pointer without a cast [-Wint-conversion]
+   56 |         writeLedOff_GPIO(LEDS[0]);     // LEDs apagados
+      |                          ~~~~^~~
+      |                              |
+      |                              GPIO_TypeDef *
+In file included from ../Drivers/API/Src/API_Debounce.c:11:
+C:/Users/marcelo/STM32CubeIDE/Grupo_7_TDII_2024/AFP4/App_4_2_Grupo_7_2024/Drivers/API/Inc/API_GPIO.h:20:29: note: expected 'led_t' {aka 'short unsigned int'} but argument is of type 'GPIO_TypeDef *'
+   20 | void writeLedOff_GPIO(led_t LDx);
+      |                       ~~~~~~^~~
+../Drivers/API/Src/API_Debounce.c:57:30: warning: passing argument 1 of 'writeLedOff_GPIO' makes integer from pointer without a cast [-Wint-conversion]
+   57 |         writeLedOff_GPIO(LEDS[1]);
+      |                          ~~~~^~~
+      |                              |
+      |                              GPIO_TypeDef *
+C:/Users/marcelo/STM32CubeIDE/Grupo_7_TDII_2024/AFP4/App_4_2_Grupo_7_2024/Drivers/API/Inc/API_GPIO.h:20:29: note: expected 'led_t' {aka 'short unsigned int'} but argument is of type 'GPIO_TypeDef *'
+   20 | void writeLedOff_GPIO(led_t LDx);
+      |                       ~~~~~~^~~
+../Drivers/API/Src/API_Debounce.c:58:30: warning: passing argument 1 of 'writeLedOff_GPIO' makes integer from pointer without a cast [-Wint-conversion]
+   58 |         writeLedOff_GPIO(LEDS[2]);
+      |                          ~~~~^~~
+      |                              |
+      |                              GPIO_TypeDef *
+C:/Users/marcelo/STM32CubeIDE/Grupo_7_TDII_2024/AFP4/App_4_2_Grupo_7_2024/Drivers/API/Inc/API_GPIO.h:20:29: note: expected 'led_t' {aka 'short unsigned int'} but argument is of type 'GPIO_TypeDef *'
+   20 | void writeLedOff_GPIO(led_t LDx);
+      |                       ~~~~~~^~~
+arm-none-eabi-gcc -o "App_4_2_Grupo_7_2024.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\marcelo\STM32CubeIDE\Grupo_7_TDII_2024\AFP4\App_4_2_Grupo_7_2024\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="App_4_2_Grupo_7_2024.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: App_4_2_Grupo_7_2024.elf
+ 
+arm-none-eabi-size  App_4_2_Grupo_7_2024.elf 
+arm-none-eabi-objdump -h -S App_4_2_Grupo_7_2024.elf  > "App_4_2_Grupo_7_2024.list"
+   text	   data	    bss	    dec	    hex	filename
+  13340	     24	   3472	  16836	   41c4	App_4_2_Grupo_7_2024.elf
+Finished building: default.size.stdout
+ 
+Finished building: App_4_2_Grupo_7_2024.list
+ 
+
+20:42:34 Build Finished. 0 errors, 3 warnings. (took 1s.506ms)
+
