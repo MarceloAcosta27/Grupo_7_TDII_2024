@@ -78,41 +78,33 @@ void Output_Pin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
 void Input_Pin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
 		{
 			uint8_t i;
-
-				for (i = 0x00; i < 0x10; i++)
-				{
-					//si es 1
-					if (GPIO_Pin & (1 << i))
-					{
-
-			#ifdef STM32F1  //la blue
-						uint8_t i1;
-																						//  borra los 4 bits      //coloca en 0100
+			for (i = 0x00; i < 0x10; i++){
+				//si es 1
+				if (GPIO_Pin & (1 << i)){
+		#ifdef STM32F1  //la blue
+			uint8_t i1;
+															//  borra los 4 bits      //coloca en 0100
 		  if (i<8) GPIOx->CRL = (GPIOx->CRL & ~(0b1111 << (4*i))) | ( 0b0100 << (4*i)) ;   //STM32F10X
-			    else
-						{
-		          i1=i-8; //despalza 8 unidades
-																							//  borra los 4 bits      //coloca en 0100
-				GPIOx->CRH = (GPIOx->CRH & ~(0b1111 << (4*i1))) | ( 0b0100 << (4*i1)); //STM32F10X
-						}//else
-		               break;
+				else{
+					i1=i-8; //despalza 8 unidades
+															//  borra los 4 bits      //coloca en 0100
+					GPIOx->CRH = (GPIOx->CRH & ~(0b1111 << (4*i1))) | ( 0b0100 << (4*i1)); //STM32F10X
+				}//else
+		    break;
 			  #else
 			     //borra los bit //no es necesario colocar 1
 
-		                  GPIOx->MODER &= ~(0b11UL << (2 * i));
-						//si se desea se configiura la parte de pull up o pull down
-						/*
-						 0=GPIO_NOPULL
-						 1=GPIO_PULLUP
-						 2=GPIO_PULLDOWN
-						*/
-
-					                              //borra los bits     tipo de entrada
+		    GPIOx->MODER &= ~(0b11UL << (2 * i));
+			//si se desea se configiura la parte de pull up o pull down
+			/*
+			0=GPIO_NOPULL
+			1=GPIO_PULLUP
+			2=GPIO_PULLDOWN
+			*/
+			//borra los bits     tipo de entrada
 				GPIOx->PUPDR=(GPIOx->PUPDR & ~(0b11UL << (2 * i))) | (GPIO_PULLUP << (2 * i));  //NOPULL ORIGINALMENTE
 				break;
 				#endif
-
-
 					}//if 1<<i
 				}//for
 			}

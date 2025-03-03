@@ -51,31 +51,24 @@ uint8_t special2[8] = {
         0b00000
 };
 
-void HD44780_Init(uint8_t rows)
-{
+void HD44780_Init(uint8_t rows){
   dpRows = rows;
-
   dpBacklight = LCD_BACKLIGHT;
-
   dpFunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS;
 
-  if (dpRows > 1)
-  {
+  if (dpRows > 1){
     dpFunction |= LCD_2LINE;
   }
-  else
-  {
+  else{
     dpFunction |= LCD_5x10DOTS;
   }
-
-  /* Wait for initialization */
+/* Wait for initialization */
   DelayInit();
   HAL_Delay(50);
 
   ExpanderWrite(dpBacklight);
   HAL_Delay(1000);
-
-  /* 4bit Mode */
+/* 4bit Mode */
   Write4Bits(0x03 << 4);
   DelayUS(4500);
 
@@ -87,15 +80,12 @@ void HD44780_Init(uint8_t rows)
 
   Write4Bits(0x02 << 4);
   DelayUS(100);
-
-  /* Display Control */
+/* Display Control */
   SendCommand(LCD_FUNCTIONSET | dpFunction);
-
   dpControl = LCD_DISPLAYON | LCD_CURSOROFF | LCD_BLINKOFF;
   HD44780_Display();
   HD44780_Clear();
-
-  /* Display Mode */
+/* Display Mode */
   dpMode = LCD_ENTRYLEFT | LCD_ENTRYSHIFTDECREMENT;
   SendCommand(LCD_ENTRYMODESET | dpMode);
   DelayUS(4500);
